@@ -166,7 +166,7 @@ Library
 
 Executable tutd
     Build-Depends: base >=4.8 && <5.0,
-                   ghc >= 7.8 && < 8.3,
+                   ghc >= 7.8 && < 8.5,
                    ghc-paths,
                    project-m36,
                    containers,
@@ -194,7 +194,7 @@ Executable tutd
                    directory,
                    filepath,
                    temporary,
-                   megaparsec >= 5.2.0 && < 5.4,
+                   megaparsec >= 5.2.0 && < 7,
                    haskeline,
                    random, MonadRandom,
                    base64-bytestring,
