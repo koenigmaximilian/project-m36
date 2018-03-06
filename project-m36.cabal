@@ -24,7 +24,7 @@ Flag profiler
 
 Library
     Build-Depends: base>=4.8 && < 6.0
-                   ,ghc >= 7.8 && < 8.3
+                   ,ghc >= 7.8 && < 8.5
                    ,ghc-paths
                    ,mtl
                    ,containers
@@ -229,7 +229,7 @@ Executable tutd
 
 Executable project-m36-server
     Build-Depends: base,
-                   ghc >= 7.8 && < 8.3,
+                   ghc >= 7.8 && < 8.5,
                    ghc-paths,
                    project-m36,
                    binary,
