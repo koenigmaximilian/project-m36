@@ -19,7 +19,7 @@ import Text.Megaparsec.Char
 import qualified Text.Megaparsec.Char.Lexer as Lex
 import Text.Megaparsec
 import Data.Void
-import Control.Applicative
+import Control.Applicative hiding (many)
 #else
 import Text.Megaparsec.Text
 import qualified Text.Megaparsec.Lexer as Lex
