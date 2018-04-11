@@ -3,10 +3,10 @@ import ProjectM36.Base
 import ProjectM36.Relation
 import qualified Data.Set as S
 import Data.Monoid
+import qualified Data.Text as T
 
 {-
 keys can be implemented using inclusion dependencies as well: the count of the projection of the keys' attributes must be equal to the count of the tuples- p. 120 Database in Depth
-
 example: 
 :showexpr ((relation{tuple{}}:{a:=S}):{b:=count(@a)}){b}
 ┌─┐
@@ -35,7 +35,7 @@ inclusionDependencyForKey attrNames relExpr = --InclusionDependency name (exprCo
 
 -- | Create a 'DatabaseContextExpr' which can be used to add a uniqueness constraint to attributes on one relation variable.
 databaseContextExprForUniqueKey :: RelVarName -> [AttributeName] -> DatabaseContextExpr
-databaseContextExprForUniqueKey rvName attrNames = AddInclusionDependency (rvName <> "_key") $ inclusionDependencyForKey (AttributeNames (S.fromList attrNames)) (RelationVariable rvName ())
+databaseContextExprForUniqueKey rvName attrNames = AddInclusionDependency (rvName <> "_" <> T.intercalate "_" attrNames <> "_key") $ inclusionDependencyForKey (AttributeNames (S.fromList attrNames)) (RelationVariable rvName ())
 
 -- | Create a foreign key constraint from the first relation variable and attributes to the second.
 databaseContextExprForForeignKey :: IncDepName -> (RelVarName, [AttributeName]) -> (RelVarName, [AttributeName]) -> DatabaseContextExpr
@@ -61,7 +61,4 @@ isForeignKeyFor :: InclusionDependency -> (RelVarName, [AttributeName]) -> (RelV
 isForeignKeyFor incDep infoA infoB = incDep == checkIncDep
   where
     checkIncDep = inclusionDependencyForForeignKey infoA infoB
-
-
-
 
