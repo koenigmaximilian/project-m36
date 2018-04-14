@@ -116,7 +116,7 @@ queryOrErr expr = Db $ do
   lift $ C.executeRelationalExpr sess conn expr
 
 -- | Unconditionally roll back the current transaction and throw an exception to terminate the execution of the Db monad.
-rollback :: Db ()
+rollback :: Db a
 rollback = cancelTransaction TransactionRolledBack
 
 -- | Cancel a transaction and carry some error information with it.
