@@ -1,6 +1,6 @@
 {-# LANGUAGE CPP #-}
 module ProjectM36.Win32Handle where
-import System.Win32.Types
+import System.Win32.Types hiding (withStablePtr)
 import Control.Exception (bracket)
 import Foreign.StablePtr
 import Foreign.C.Types
